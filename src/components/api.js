@@ -2,15 +2,18 @@ import { React, useState, useEffect } from "react";
 function Api() {
   const [api, setData] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
-      res.json().then((data) => setData(...data))
+    fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+      res.json().then((data) => setData(data))
     );
-    console.log("hi", api);
   }, []);
   return (
     <>
-      <div>hi miraj</div>
-      <div>{JSON.stringify(api)}</div>
+      <div>JSON PLACEHOLDER</div>
+      <div>
+        {api.map((data) => (
+          <li key={data.id}>{data.title}</li>
+        ))}
+      </div>
     </>
   );
 }
